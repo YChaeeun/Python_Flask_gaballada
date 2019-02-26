@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>개 바라다</title>
+    {# bootstrap CDN #}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+    <style>
+      input.img-button {
+        background: url( "static/image/search_button.png" ) no-repeat;
+        border: none;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+      }
+       .banner {
+  height: 200px;
+  width: 100%;
+  background-image: url("../static/image/image1.jpg");
+  background-size: cover;
+}
+    </style>
+</head>
+
+<body>
+
+</div>
+    {# top_menu.html을 포함한다 #}
+    {% include '/include/top_menu.html' %}
+
+
+
+
+    {# 본문 부분 #}
+    <div class="container" style="margin-top:50px">
+        <div class="row">
+            <div class="col-4">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <form class="form-inline" action="/action_page.php">
+                                <input class="form-control col-sm mr-2" type="text" placeholder="Search..">
+                                <input type="button" class="img-button mr-1">
+                            </form>
+                            <img src="{{url_for('static', filename='image/ad_image.png')}}" style="max-width:100%"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8" style="padding-left:50px">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header bg-light">
+                                <div class="text-center">
+                                    <img src="{{url_for('static', filename='image/ranking_image.png')}}"/>
+                                    <label style="color:black"><font size="5em">R A N K I N G</font></label>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:80px">
+            <div class="col">
+                <a href="{{url_for('board_example.board_ex_list')}}">
+                    <img src="{{url_for('static', filename='image/banner1.png')}}" class="rounded" style="max-width:90%">
+                </a>
+            </div>
+            <div class="col" style="padding-left:50px">
+                <a href="{{url_for('board_activity.board_activity_list')}}">
+                    <img src="{{url_for('static', filename='image/banner2.png')}}" class="rounded" style="max-width:90%">
+                </a>
+            </div>
+            <div class="col" style="padding-left:50px">
+                <a href="{{url_for('board_study.board_study_list')}}">
+                    <img src="{{url_for('static', filename='image/banner3.png')}}" class="rounded" style="max-width:90%">
+                </a>
+            </div>
+        </div>
+        <div style="margin-top:100px"></div>
+    </div>
+
+
+</body>
+</html>

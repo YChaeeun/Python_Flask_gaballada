@@ -1,0 +1,55 @@
+
+
+
+    {# 로고 #}
+    <div class="mt-2">
+        <a href="/" style="margin : 10px">
+            <img src="{{url_for('static', filename='image/logo.jpg')}}" style="max-width:13%"/>
+        </a>
+    </div>
+
+    <nav class="navbar navbar-expand-sm bg-light navbar-light sticky-top p-0
+                border border-dark border-top-0 border-right-0 border-left-0">
+        {# 좌측 메뉴 #}
+        <ul class="navbar-nav">
+            <li class="nav-item ml-5 dropdown">
+                <a class="nav-link dropdown-toggle font-weight-bold" href="#" data-toggle="dropdown"><font size="4em">?!</font></a>
+                <div class="dropdown-menu dropdown">
+                    <a class="dropdown-item" href="{{url_for('board_app.board_app_list')}}" style="color:gray">App</a>
+                    <a class="dropdown-item" href="{{url_for('board_phone.board_m_list')}}" style="color:gray">Phone</a>
+                    <a class="dropdown-item" href="{{url_for('board_web.board_web_list')}}" style="color:gray">Web Service</a>
+                </div>
+            </li>
+
+            <li class="nav-item ml-5">
+                <a class="nav-link dropdown-toggle font-weight-bold" href="#" data-toggle="dropdown"><font size="4em">INFO</font></a>
+                <div class="dropdown-menu dropdown-menu-bottom">
+                    <a class="dropdown-item" href="{{url_for('board_example.board_ex_list')}}" style="color:gray">예제</a>
+                    <a class="dropdown-item" href="{{url_for('board_study.board_study_list')}}" style="color:gray">스터디ㆍ동아리</a>
+                    <a class="dropdown-item" href="{{url_for('board_activity.board_activity_list')}}" style="color:gray">공모전ㆍ대외활동</a>
+                </div>
+            </li>
+            <li class="nav-item ml-5">
+                <a class="nav-link font-weight-bold" href="{{url_for('board_free.board_f_list')}}"><font size="4em">TALK</font></a>
+            </li>
+        </ul>
+        {# 우측 메뉴 #}
+    <ul class="navbar-nav ml-auto">
+        {% if session['login'] and session['login'] == 'YES'%}
+        <li class="nav-item">
+            <a class="nav-link" href="{{url_for('user_blue.user_mypage')}}">마이페이지</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url_for('user_blue.user_logout')}}">로그아웃</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{url_for('user_blue.user_login')}}" >로그인</a>
+            {#이때 user_blue는 블루프린트 만들때 Blueprint('user_blue', __name__) 의 user_blue#}
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url_for('user_blue.user_join')}}">회원가입</a>
+        </li>
+        {% endif %}
+    </ul>
+    </nav>

@@ -1,0 +1,48 @@
+잘 안되는 부분... 뭐야
+
+<!--
+                            <div class="card-body">
+                                <table class="table">
+                                    <tr>
+                                        <td>
+                                            <hr/>
+                                            <label>1. </label>
+                                            <a href="http://127.0.0.1:5000/boards/board_web_read/3/4" style="color:black">{{data_list[0].content_subject}} 추천수{{data_list[0].likes}}</a>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <hr/>
+                                            <label>2. </label>
+                                            <a href="http://127.0.0.1:5000/boards/board_web_read/3/2" style="color:black">{{data_list[1].content_subject}} 추천수{{data_list[1].likes}}</a>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <hr/>
+                                            <label>3. </label>
+                                            <a href="http://127.0.0.1:5000/boards/board_app_read/1/4" style="color:black">{{data_list[2].content_subject}} 추천수{{data_list[2].likes}}</a>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <hr/>
+                                            <label>4. </label>
+                                            <a href="http://127.0.0.1:5000/boards/board_m_read/2/2" style="color:black">{{data_list[3].content_subject}} 추천수{{data_list[3].likes}}</a>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <hr/>
+                                            <label>5. </label>
+                                            <a href="http://127.0.0.1:5000/boards/board_m_read/2/1" style="color:black">{{data_list[4].content_subject}} 추천수{{data_list[4].likes}}</a>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        -->

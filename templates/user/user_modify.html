@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    {# bootstrap CDN #}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    {# 다음 주소 API #}
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script src="{{url_for('static', filename='js/daum_address.js')}}"></script>
+
+    <script>
+        function check_input(){
+        // 사용자가 입력한 값들 가져오기
+            user_pw = $("#user_pw").val()
+            user_pw2 = $("#user_pw2").val()
+            user_postal = $("#user_postal").val()
+            user_addr1 = $("#user_addr1").val()
+            user_addr2 = $("#user_addr2").val()
+
+        //유효성검사
+        if(user_pw.length == 0){
+            alert('비밀번호를 입력하세요')
+            $("#user_pw").focus()
+            return false
+        }
+        if(user_pw != user_pw2){
+            alert('비밀번호가 일치하지 않습니다.')
+            $("#user_pw2").focus()
+            return false
+        }
+        if(user_postal.length == 0){
+            alert('주소를 검색해주세요')
+            $("#user_postal").focus()
+            return false
+        }
+        if(user_addr2.length == 0){
+            alert('상세주소를 입력해주세요')
+            $("#user_addr2").focus()
+            return false
+        }
+
+        if(isCheckId == false){
+            alert('아이디 중복을 확인해주세요')
+            $("#user_id").focus()
+            return false
+        }
+
+        return true
+    }
+    </script>
+</head>
+<body>
+    {# top_menu.html을 포함한다 #}
+    {% include '/include/top_menu.html' %}
+
+    {# 다음 주소 검색창 / 화면에 나오는 부분은 아님 흠...?#}
+    <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
+        <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+    </div>
+
+    {# 본문 부분 #}
+    <div class="cotainer" style="margin-top:100px">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <div class="card">
+                    <form action="{{url_for('user_blue.user_modify_pro')}}" method="post" style="margin-top:30px">
+                        <div class="card-body">
+                            <h2>정보 수정</h2>
+                            <div class="form-group" readonly="readonly">
+                                <div class="input-group">
+                                    <input type="text" name="user_name" id="user_name" class="form-control" readonly="readonly" placeholder="{{data_dic.user_name}}"/>  
+                                </div>
+                            </div> 
+                        
+                            <div class="form-group" readonly="readonly">
+                                <div class="input-group">
+                                    <input type="text" name="user_id" id="user_id" class="form-control" readonly="readonly" placeholder="{{data_dic.user_id}}"/>    
+                                </div>
+                            </div> 
+
+                            <div class="form-group">
+                                <label for="user_pw">비밀번호 바꾸기</label>
+                                <input type="password" class="form-control"
+                                        name="user_pw" id="user_pw"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="user_pw2">비밀번호 확인</label>
+                                <input type="password" class="form-control"
+                                            name="user_pw2" id="user_pw2"/>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="hidden" id="sample2_extraAddress"/>
+                                    <input type="text" name="user_postal" id="user_postal"
+                                            class="form-control" readonly="readonly" placeholder="{{data_dic.user_postal}}"/>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-primary" type="button" onclick="sample2_execDaumPostcode()">
+                                            주소검색
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-control"
+                                           name="user_addr1" id="user_addr1" readonly="readonly" placeholder="{{data_dic.user_addr1}}"/>
+                            </div>
+            
+                            <div class="form-group">
+                                <input type="text" class="form-control"
+                                           name="user_addr2" id="user_addr2" placeholder="{{data_dic.user_addr2}}"/>
+                            </div>
+                        
+                            <div class="form-group" style="padding-top:2px">
+                                <div class="clearfix">
+                                    <div class="float-right">
+                                        <button type="submit" class="btn btn-primary">
+                                            수정 완료
+                                        </button>
+                                        <a href="/" class="btn btn-danger">
+                                            취소
+                                        </a>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <div class="col-3"></div>
+        </div>
+        <div style="margin-top:100px"></div>
+    </div>
+
+</body>
+</html>

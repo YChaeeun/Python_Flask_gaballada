@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>자유게시판/글 작성</title>
+    {# bootstrap CDN #}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    {# 글 보기#}
+
+    {% include '/include/top_menu.html'%}
+
+    {# 본문 부분 #}
+    <div class="container" style="margin-top:100px;">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <form action="{{url_for('board_free.board_f_write_pro')}}" method="post" enctype ="multipart/form-data">
+                    <div class="card">                    
+                        <div class="card-header" style=" padding-right:5px">                        
+                            <div class="input-group mt-3 mb-3" style="padding-right:15px">
+                                
+                                <input type="hidden" name="board_f_idx" value="{{data_dic.board_f_idx}}"/>
+                                
+                                <input type="text" class="form-control" 
+                                name="board_subject" id="board_subject" placeholder="제목을 적어주세요"/>
+                            </div>
+    
+                        </div>
+                        <div class="card-body">
+                            <textarea class="form-control" name="board_text"
+                                id="board_text" style="height:300px" placeholder="내용을 적어주세요"></textarea>
+                        </div> 
+
+                        <div class="card-footer">
+                            {# 이미지 첨부하기#}
+                            <input type="file" class="form-control"
+                               name="board_image" id="board_image"
+                               accept="image/*"/>
+                        </div>
+                    </div>
+
+                    <div class="clearfix" style="margin-top:30px">
+                        <div class="float-right">
+                            <button type="submit" class="btn btn-primary">
+                                완료
+                            </button>
+                            <a href="{{url_for('board_free.board_f_list')}}" class="btn btn-warning">
+                                취소
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-2"></div>
+            <div style="margin-top:100px"></div>
+        </div>
+
+    </div>
+</body>
+</html>

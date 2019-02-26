@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+    {# bootstrap CDN #}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    {# top_menu.html을 포함한다 #}
+    {% include '/include/top_menu.html' %}
+    <div class="cotainer" style="margin-top:100px">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                    {#내 정보 보기#}
+                <div class="card">
+                    <div class="card-header">
+                        <div class="float-left" style="font-size:20px">내 정보 보기</div>
+                        <span class="float-right" style="font-size:14px;bottom:0;padding-top:10px">
+                            <a href="./user_modify/{{data_dic.user_idx}}">수정하기</a>
+                        </span>
+                    </div>
+                    <div class="card-body">
+                        <table class="table" style="margin-top:0px">
+                            <tbody style="font-size:13px">
+                                <tr>
+                                    <td>이름</td>
+                                    <td>{{data_dic.user_name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>아이디</td>
+                                    <td>{{data_dic.user_id}}</td>
+                                </tr>
+                                <tr>
+                                    <td>주소</td>
+                                    <td>{{data_dic.user_addr1}} {{data_dic.user_addr2}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-bottom:20pxpx"></div>
+                </div>
+                
+                <div class="card" style="margin-top:25px">
+                    <div class="card-body" style="padding-top:10px">
+                        <table class="table" style="margin-top:30px">
+                            <thead>
+                                <tr style="font-size:13px">
+                                    <th style="min-width:50px">번호</th>
+                                    <th style="width:60%">제목</th>
+                                    <th style="min-width:80px;text-align:center">작성자</th>
+                                    <th style="min-width:50px;text-align:center">추천</th>
+                                    <th style="width:20%;text-align:center">날짜</th>
+                                    <th style="min-width:50px;text-align:center">조회</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for obj in data_list%}
+                                <tr style="font-size:15px">
+                                    <td>{{obj.content_idx}}</td>
+                                    <td><a href="/boards/board_f_read/{{obj.board_idx}}/{{obj.content_idx}}">{{obj.content_subject}}</a></td>
+                                    <td style="font-size:14px">{{obj.content_writer_name}}</td>
+                                    <td>{{obj.content_likes}}</td>
+                                    <td>{{obj.content_date}}</td>
+                                    <td>{{obj.content_view}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+        
+                        
+            </div>
+            <div class="col-3"></div>                
+        </div>
+        <div style="margin-top:100px"></div>
+    </div>
+</body>
+</html>
