@@ -6,7 +6,7 @@ About...
 * gaballada(개바라다) 
 
   - web community service about "inconvenience" when using IT services (ex. applications, web services...)
-  - it could help developers to enhance services by communicating with their customers ideas
+  - it could help developers to enhance services by communicating with their customers (& customers idea)
   
 * tools & environments
 
@@ -19,7 +19,6 @@ About...
   *and little bit of...*
   
    - HTML, javascript, CSS
-   - KoNLPy
 
 Feautures
 ---------
