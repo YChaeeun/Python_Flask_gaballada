@@ -54,19 +54,19 @@ Feautures
 
 
 
-![phto](.\img\photo-1.png)
+![photo](./img/photo-1.png)
 
 
 
-![phto](.\img\photo-2.png)
+![photo](./img/photo-2.png)
 
 
 
-![phto](.\img\photo-5.png)
+![photo](./img/photo-5.png)
 
-![phto](.\img\photo-4.png)
+![photo](./img/photo-4.png)
 
-![phto](.\img\photo-3.png)
+![photo](./img/photo-3.png)
 
 
 
